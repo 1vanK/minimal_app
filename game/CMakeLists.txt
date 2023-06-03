@@ -19,7 +19,7 @@ set(target_name game)
 set(result_dir "${CMAKE_SOURCE_DIR}/result")
 
 # Создаём список файлов
-file(GLOB_RECURSE source_files src/*.cpp src/*.h)
+file(GLOB_RECURSE source_files src/*.cpp src/*.hpp)
 
 # Папка для экзешника
 dv_set_bin_dir(${result_dir})
