@@ -6,6 +6,8 @@
 #include <dviglo/gl_utils/shader_cache.hpp>
 #include <dviglo/gl_utils/texture_cache.hpp>
 #include <dviglo/io/fs_base.hpp>
+#include <dviglo/main/engine_params.hpp>
+#include <dviglo/main/os_window.hpp>
 
 #include <glad/gl.h>
 #include <glm/glm.hpp>
@@ -32,6 +34,11 @@ struct Vertex
     vec2 uv;
 };
 
+void App::setup()
+{
+    engine_params::window_size = ivec2(900, 700);
+}
+
 void App::start()
 {
     StrUtf8 base_path = get_base_path();
@@ -46,20 +53,20 @@ static float rotation = 0.f;
 
 static StrUtf8 fps_text;
 
-void App::update(u64 ms)
+void App::update(u64 ns)
 {
-    rotation += ms * 0.0001f;
+    rotation += ns * 0.000'000'000'1f;
     while (rotation >= 360.f)
         rotation -= 360.f;
 
-    float fps = 1000.f / ms;
+    u64 fps = SDL_NS_PER_SECOND / ns;
     fps_text = format("FPS: {}", fps);
 }
 
-ivec2 screen_size{800, 600};
-
 void App::draw()
 {
+    ivec2 screen_size = DV_OS_WINDOW->size_in_pixels();
+
     glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
