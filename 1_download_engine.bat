@@ -8,8 +8,8 @@ set "PATH=c:\program files\git\bin"
 git clone https://github.com/dviglo2d/dviglo2d engine
 
 :: Так как в движке могут произойти изменения, ломающие обратную совместимость,
-:: то возвращаем состояние репозитория к определённой версии (11.06.2023)
-git -C engine reset --hard 6d2d33e3873a1d866a4850864f3561e202b60b1c
+:: то возвращаем состояние репозитория к определённой версии
+git -C engine reset --hard 70442ca8843e056446644dd1b7670bfcaa54dbbd
 
 :: Ждём нажатие Enter перед закрытием консоли
 pause
