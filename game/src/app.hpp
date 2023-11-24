@@ -1,6 +1,3 @@
-// Copyright (c) the Dviglo project
-// License: MIT
-
 #pragma once
 
 #include <dviglo/gl_utils/index_buffer.hpp>

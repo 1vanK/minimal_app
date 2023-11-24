@@ -1,6 +1,3 @@
-// Copyright (c) the Dviglo project
-// License: MIT
-
 #include "app.hpp"
 
 #include <dviglo/gl_utils/shader_cache.hpp>
