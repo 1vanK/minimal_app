@@ -1,4 +1,4 @@
-// Copyright (c) 2022-2023 the Dviglo project
+// Copyright (c) the Dviglo project
 // License: MIT
 
 #include "app.hpp"
@@ -11,12 +11,12 @@
 
 #include <glad/gl.h>
 #include <glm/glm.hpp>
-#include <fmt/format.h>
 
+#include <format>
 #include <iostream>
 
 using namespace glm;
-using namespace fmt;
+using namespace std;
 
 
 App::App(const std::vector<StrUtf8>& args)
