@@ -21,7 +21,7 @@ App::App(const std::vector<StrUtf8>& args)
 {
     cout << "Командная строка: " << join(args, " ") << endl;
 
-    log_path_ = "путь/к/логу";
+    log_path_ = get_pref_path("dviglo2d", "minimal_app") + "log.log";
 }
 
 struct Vertex
