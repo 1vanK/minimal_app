@@ -1,9 +1,0 @@
-# Формат файла: https://git-scm.com/docs/gitignore
-
-# Игнорируем все папки, кроме game
-/*/
-!/game/
-
-# Игнорируем в папке game/result всё, кроме папки game_data
-/game/result/*
-!/game/result/game_data/

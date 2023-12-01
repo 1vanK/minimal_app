@@ -16,7 +16,7 @@ add_subdirectory(${engine_dir} dviglo2d)
 set(target_name game)
 
 # Папка для скомпилированной игры
-set(result_dir "${CMAKE_SOURCE_DIR}/result")
+set(result_dir "${CMAKE_SOURCE_DIR}/../result")
 
 # Создаём список файлов
 file(GLOB_RECURSE source_files src/*.cpp src/*.hpp)
@@ -43,16 +43,15 @@ dv_copy_shared_libs_to_bin_dir(${target_name} ${result_dir} copy_shared_libs_to_
 
 file(MAKE_DIRECTORY ${result_dir})
 
-# Список папок с ресурсами, которые будут скопированы к экзешнику
-set(dir_names data)
-
 # Копируем папки к экзешнику, если нужно
-foreach(dir_name ${dir_names})
-    if(NOT EXISTS ${result_dir}/${dir_name})
-        message("!!!!!!!!! COPY ${engine_dir}/bin/${dir_name} ${result_dir}/${dir_name}")
-        dv_create_dir_link(${engine_dir}/bin/${dir_name} ${result_dir}/${dir_name})
-    endif()
-endforeach()
+if(NOT EXISTS ${result_dir}/data)
+    message("!!!!!!!!! COPY ${engine_dir}/bin/data ${result_dir}/data")
+    dv_create_dir_link(${engine_dir}/bin/data ${result_dir}/data)
+endif()
+if(NOT EXISTS ${result_dir}/game_data)
+    message("!!!!!!!!! COPY ${CMAKE_SOURCE_DIR}/game_data ${result_dir}/game_data")
+    dv_create_dir_link(${CMAKE_SOURCE_DIR}/game_data ${result_dir}/game_data)
+endif()
 
 # Заставляем Visual Studio отображать дерево каталогов
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/src FILES ${source_files})
