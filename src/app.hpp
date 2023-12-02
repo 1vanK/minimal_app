@@ -18,7 +18,8 @@ class App : public Application
     Texture* texture_;
     ShaderProgram* vert_color_shader_prog_;
     unique_ptr<SpriteBatch> sprite_batch_;
-    unique_ptr<SpriteFont> font_;
+    unique_ptr<SpriteFont> r_20_font_;
+    unique_ptr<SpriteFont> my_font_;
 
 public:
     App(const vector<StrUtf8>& args);

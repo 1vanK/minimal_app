@@ -43,7 +43,8 @@ void App::start()
 
     texture_ = DV_TEXTURE_CACHE->get(base_path + "data/textures/tile128.png");
     sprite_batch_ = make_unique<SpriteBatch>();
-    font_ = make_unique<SpriteFont>(base_path + "data/fonts/ubuntu-r_20_simple.fnt");
+    r_20_font_ = make_unique<SpriteFont>(base_path + "data/fonts/ubuntu-r_20_simple.fnt");
+    my_font_ = make_unique<SpriteFont>(base_path + "game_data/fonts/my_font.fnt");
 }
 
 static float rotation = 0.f;
@@ -87,8 +88,12 @@ void App::draw()
     sprite_batch_->draw_sprite(texture_, {100.f, 100.f});
     sprite_batch_->draw_sprite(texture_, {500.f, 100.f}, nullptr, 0xFFFFFFFF, rotation);
 
-    sprite_batch_->draw_string(fps_text, font_.get(), vec2{4.f, 1.f}, 0xFF000000);
-    sprite_batch_->draw_string(fps_text, font_.get(), vec2{3.f, 0.f}, 0xFFFFFFFF);
+    sprite_batch_->draw_string(fps_text, r_20_font_.get(), vec2{4.f, 1.f}, 0xFF000000);
+    sprite_batch_->draw_string(fps_text, r_20_font_.get(), vec2{3.f, 0.f}, 0xFFFFFFFF);
+
+    float mouse_x, mouse_y;
+    u32 mouse_status = SDL_GetMouseState(&mouse_x, &mouse_y);
+    sprite_batch_->draw_string("Привет!", my_font_.get(), vec2{mouse_x, mouse_y});
 
     sprite_batch_->flush();
 }
