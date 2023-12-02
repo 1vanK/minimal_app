@@ -53,6 +53,9 @@ if(NOT EXISTS ${result_dir}/game_data)
     dv_create_dir_link(${CMAKE_SOURCE_DIR}/game_data ${result_dir}/game_data)
 endif()
 
+# Добавляем приложение в список тестируемых
+add_test(NAME ${target_name} COMMAND ${target_name} -duration 5)
+
 # Заставляем Visual Studio отображать дерево каталогов
 source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/src FILES ${source_files})
 
