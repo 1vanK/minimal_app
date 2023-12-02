@@ -1,3 +1,5 @@
+[![](https://github.com/dviglo2d-learn/minimal_app/actions/workflows/main.yml/badge.svg)](https://github.com/dviglo2d-learn/minimal_app/actions)
+
 # Шаблон приложения / Минимальное приложение
 
 Единственным способом использования движка является подключение его как поддиректории.
