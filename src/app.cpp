@@ -41,9 +41,9 @@ void App::start()
     StrUtf8 base_path = get_base_path();
     cout << "Папка программы: " << base_path << endl;
 
-    texture_ = DV_TEXTURE_CACHE->get(base_path + "data/textures/tile128.png");
+    texture_ = DV_TEXTURE_CACHE->get(base_path + "samples_data/textures/tile128.png");
     sprite_batch_ = make_unique<SpriteBatch>();
-    r_20_font_ = make_unique<SpriteFont>(base_path + "data/fonts/ubuntu-r_20_simple.fnt");
+    r_20_font_ = make_unique<SpriteFont>(base_path + "samples_data/fonts/ubuntu-r_20_simple.fnt");
     my_font_ = make_unique<SpriteFont>(base_path + "game_data/fonts/my_font.fnt");
 }
 
