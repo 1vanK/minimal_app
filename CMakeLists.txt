@@ -50,14 +50,14 @@ set(dir_names engine_data samples_data)
 # Копируем папки с ресурсами движка в result, если нужно
 foreach(dir_name ${dir_names})
     if(NOT EXISTS ${result_dir}/${dir_name})
-        message("!!!!!!!!! COPY ${engine_dir}/result/${dir_name} to ${result_dir}/${dir_name}")
+        message("!!!!!!!!! COPY ${engine_dir}/result/${dir_name} TO ${result_dir}/${dir_name}")
         dv_create_dir_link(${engine_dir}/result/${dir_name} ${result_dir}/${dir_name})
     endif()
 endforeach()
 
 # Копируем папку с ресурсами игры в result, если нужно
 if(NOT EXISTS ${result_dir}/game_data)
-    message("!!!!!!!!! COPY ${CMAKE_SOURCE_DIR}/result/game_data to ${result_dir}/game_data")
+    message("!!!!!!!!! COPY ${CMAKE_SOURCE_DIR}/result/game_data TO ${result_dir}/game_data")
     dv_create_dir_link(${CMAKE_SOURCE_DIR}/result/game_data ${result_dir}/game_data)
 endif()
 
