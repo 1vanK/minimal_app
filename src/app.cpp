@@ -47,6 +47,28 @@ void App::start()
     my_font_ = make_unique<SpriteFont>(base_path + "game_data/fonts/my_font.fnt");
 }
 
+void App::handle_sdl_event(const SDL_Event& event)
+{
+    Application::handle_sdl_event(event); // Реагируем на закрытие приложения
+
+    switch (event.type)
+    {
+    case SDL_EVENT_KEY_DOWN:
+    case SDL_EVENT_KEY_UP:
+        on_key(event.key);
+        break;
+    }
+}
+
+void App::on_key(const SDL_KeyboardEvent& event_data)
+{
+    if (event_data.type == SDL_EVENT_KEY_DOWN && event_data.repeat == false
+        && event_data.keysym.scancode == SDL_SCANCODE_ESCAPE)
+    {
+        should_exit_ = true;
+    }
+}
+
 static float rotation = 0.f;
 
 static StrUtf8 fps_text;
