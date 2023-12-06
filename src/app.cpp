@@ -1,13 +1,9 @@
 #include "app.hpp"
 
-#include <dviglo/gl_utils/shader_cache.hpp>
 #include <dviglo/gl_utils/texture_cache.hpp>
 #include <dviglo/io/fs_base.hpp>
 #include <dviglo/main/engine_params.hpp>
 #include <dviglo/main/os_window.hpp>
-
-#include <glad/gl.h>
-#include <glm/glm_wrapped.hpp>
 
 #include <format>
 #include <iostream>
@@ -22,13 +18,6 @@ App::App(const vector<StrUtf8>& args)
 
     log_path_ = get_pref_path("dviglo2d", "minimal_app") + "log.log";
 }
-
-struct Vertex
-{
-    vec2 pos;
-    u32 color;
-    vec2 uv;
-};
 
 void App::setup()
 {
