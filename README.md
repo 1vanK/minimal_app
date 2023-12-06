@@ -39,7 +39,7 @@ git clone https://github.com/dviglo2d/dviglo2d engine
 
 :: Так как в движке могут произойти изменения, ломающие обратную совместимость,
 :: то возвращаем состояние репозитория к определённой версии
-git -C engine reset --hard a74dab87393904ee0701cab834d8c6893f1d3af6
+git -C engine reset --hard cace521ff145a0020b291da4e98a9402eaf1b397
 
 :: Ждём нажатие Enter перед закрытием консоли
 pause
@@ -103,7 +103,7 @@ git clone https://github.com/dviglo2d/dviglo2d engine
 
 # Так как в движке могут произойти изменения, ломающие обратную совместимость,
 # то возвращаем состояние репозитория к определённой версии
-git -C engine reset --hard a74dab87393904ee0701cab834d8c6893f1d3af6
+git -C engine reset --hard cace521ff145a0020b291da4e98a9402eaf1b397
 ```
 
 `3_cmake_gcc.sh`
