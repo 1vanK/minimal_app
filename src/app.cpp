@@ -1,7 +1,7 @@
 #include "app.hpp"
 
+#include <dviglo/fs/fs_base.hpp>
 #include <dviglo/gl_utils/texture_cache.hpp>
-#include <dviglo/io/fs_base.hpp>
 #include <dviglo/main/engine_params.hpp>
 #include <dviglo/main/os_window.hpp>
 
@@ -22,6 +22,7 @@ App::App(const vector<StrUtf8>& args)
 void App::setup()
 {
     engine_params::window_size = ivec2(900, 700);
+    engine_params::msaa_samples = 4; // При значении 8 крэшится на сервере ГитХаба в Линуксе
 }
 
 void App::start()
@@ -89,7 +90,7 @@ void App::draw()
     glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    sprite_batch_->prepare_ogl();
+    sprite_batch_->prepare_ogl(true);
 
     sprite_batch_->triangle_.v0 = {{800.f, 0.f}, 0xFF00FF00};
     sprite_batch_->triangle_.v1 = {{800.f, 300.f}, 0xFF0000FF};

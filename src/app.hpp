@@ -9,7 +9,7 @@ using namespace std;
 
 class App : public Application
 {
-    Texture* texture_;
+    Texture* texture_ = nullptr;
     unique_ptr<SpriteBatch> sprite_batch_;
     unique_ptr<SpriteFont> r_20_font_;
     unique_ptr<SpriteFont> my_font_;
