@@ -36,16 +36,20 @@ void App::start()
     my_font_ = make_unique<SpriteFont>(base_path + "game_data/fonts/my_font.fnt");
 }
 
-void App::handle_sdl_event(const SDL_Event& event)
+bool App::handle_sdl_event(const SDL_Event& event)
 {
-    Application::handle_sdl_event(event); // Реагируем на закрытие приложения
+    // Реагируем на закрытие приложения
+    if (Application::handle_sdl_event(event))
+        return true;
 
     switch (event.type)
     {
     case SDL_EVENT_KEY_DOWN:
     case SDL_EVENT_KEY_UP:
         on_key(event.key);
-        break;
+        return true;
+    default:
+        return false;
     }
 }
 
@@ -85,8 +89,6 @@ void App::update(u64 ns)
 
 void App::draw()
 {
-    ivec2 screen_size = DV_OS_WINDOW->size_in_pixels();
-
     glClearColor(1.0f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
