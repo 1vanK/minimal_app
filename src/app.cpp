@@ -14,13 +14,15 @@ using namespace glm;
 App::App(const vector<StrUtf8>& args)
     : Application(args)
 {
-    cout << "Командная строка: " << join(args, " ") << endl;
+}
 
-    log_path_ = get_pref_path("dviglo2d", "minimal_app") + "log.log";
+App::~App()
+{
 }
 
 void App::setup()
 {
+    engine_params::log_path = get_pref_path("dviglo2d", "minimal_app") + "log.log";
     engine_params::window_size = ivec2(900, 700);
     engine_params::msaa_samples = 4; // При значении 8 крэшится на сервере ГитХаба в Линуксе
 }
@@ -28,8 +30,6 @@ void App::setup()
 void App::start()
 {
     StrUtf8 base_path = get_base_path();
-    cout << "Папка программы: " << base_path << endl;
-
     texture_ = DV_TEXTURE_CACHE->get(base_path + "samples_data/textures/tile128.png");
     sprite_batch_ = make_unique<SpriteBatch>();
     r_20_font_ = make_unique<SpriteFont>(base_path + "samples_data/fonts/ubuntu-r_20_simple.fnt");

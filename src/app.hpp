@@ -16,6 +16,7 @@ class App : public Application
 
 public:
     App(const vector<StrUtf8>& args);
+    ~App() override;
 
     void setup() override;
     void start() override;
