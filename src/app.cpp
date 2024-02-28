@@ -3,10 +3,8 @@
 #include <dviglo/fs/fs_base.hpp>
 #include <dviglo/gl_utils/texture_cache.hpp>
 #include <dviglo/main/engine_params.hpp>
-#include <dviglo/main/os_window.hpp>
 
 #include <format>
-#include <iostream>
 
 using namespace glm;
 
@@ -23,7 +21,7 @@ App::~App()
 void App::setup()
 {
     engine_params::log_path = get_pref_path("dviglo2d", "minimal_app") + "log.log";
-    engine_params::window_size = ivec2(900, 700);
+    engine_params::window_size = {900, 700};
     engine_params::msaa_samples = 4; // При значении 8 крэшится на сервере ГитХаба в Линуксе
 }
 
@@ -63,7 +61,7 @@ void App::on_key(const SDL_KeyboardEvent& event_data)
     }
 }
 
-static float rotation = 0.f;
+static f32 rotation = 0.f;
 static StrUtf8 fps_text = "FPS: ?";
 
 void App::update(u64 ns)
@@ -104,17 +102,17 @@ void App::draw()
     sprite_batch_->draw_triangle({400.f, 0.f}, {400.f, 600.f}, {0.f, 600.f});
 
     sprite_batch_->set_shape_color(0x90FFFF00);
-    sprite_batch_->draw_rect({{300.f, 300.f}, {300.f, 100.f}});
+    sprite_batch_->draw_rect({300.f, 300.f, 300.f, 100.f});
 
     sprite_batch_->draw_sprite(texture_, {100.f, 100.f});
     sprite_batch_->draw_sprite(texture_, {500.f, 100.f}, nullptr, 0xFFFFFFFF, rotation);
 
-    sprite_batch_->draw_string(fps_text, r_20_font_.get(), vec2{4.f, 1.f}, 0xFF000000);
-    sprite_batch_->draw_string(fps_text, r_20_font_.get(), vec2{3.f, 0.f}, 0xFFFFFFFF);
+    sprite_batch_->draw_string(fps_text, r_20_font_.get(), {4.f, 1.f}, 0xFF000000);
+    sprite_batch_->draw_string(fps_text, r_20_font_.get(), {3.f, 0.f}, 0xFFFFFFFF);
 
-    float mouse_x, mouse_y;
+    f32 mouse_x, mouse_y;
     u32 mouse_status = SDL_GetMouseState(&mouse_x, &mouse_y);
-    sprite_batch_->draw_string("Привет!", my_font_.get(), vec2{mouse_x, mouse_y});
+    sprite_batch_->draw_string("Привет!", my_font_.get(), {mouse_x, mouse_y});
 
     sprite_batch_->flush();
 }
